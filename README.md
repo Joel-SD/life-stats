@@ -29,15 +29,15 @@ Life Stats is a viral web app that transforms your birth date into mind-blowing 
 
 ## 🛠️ Tech Stack
 
-| Tech | Purpose |
-|------|---------|
-| **Next.js 16** | App Router, SSR, static generation |
-| **TypeScript** | Strict mode, full type safety |
-| **Tailwind CSS v4** | Utility-first styling |
-| **Recharts** | (Available for future charts) |
-| **html2canvas** | Generate shareable images |
-| **Vitest** | Unit testing framework |
-| **React Testing Library** | Component testing |
+| Tech                      | Purpose                            |
+| ------------------------- | ---------------------------------- |
+| **Next.js 16**            | App Router, SSR, static generation |
+| **TypeScript**            | Strict mode, full type safety      |
+| **Tailwind CSS v4**       | Utility-first styling              |
+| **Recharts**              | (Available for future charts)      |
+| **html2canvas**           | Generate shareable images          |
+| **Vitest**                | Unit testing framework             |
+| **React Testing Library** | Component testing                  |
 
 ## 📦 Getting Started
 
@@ -64,13 +64,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `yarn dev` | Start development server |
-| `yarn build` | Production build |
-| `yarn start` | Start production server |
-| `yarn test` | Run unit tests |
-| `yarn lint` | Run ESLint |
+| Command      | Description              |
+| ------------ | ------------------------ |
+| `yarn dev`   | Start development server |
+| `yarn build` | Production build         |
+| `yarn start` | Start production server  |
+| `yarn test`  | Run unit tests           |
+| `yarn lint`  | Run ESLint               |
 
 ## 🧪 Testing
 
@@ -86,13 +86,13 @@ npx vitest
 
 ## 🌐 Supported Languages
 
-| Language | Code | Auto-detected |
-|----------|------|---------------|
-| 🇺🇸 English | `en` | ✅ |
-| 🇪🇸 Spanish | `es` | ✅ |
-| 🇧🇷 Portuguese | `pt` | ✅ |
-| 🇮🇳 Hindi | `hi` | ✅ |
-| 🇫🇷 French | `fr` | ✅ |
+| Language      | Code | Auto-detected |
+| ------------- | ---- | ------------- |
+| 🇺🇸 English    | `en` | ✅            |
+| 🇪🇸 Spanish    | `es` | ✅            |
+| 🇧🇷 Portuguese | `pt` | ✅            |
+| 🇮🇳 Hindi      | `hi` | ✅            |
+| 🇫🇷 French     | `fr` | ✅            |
 
 The app automatically detects your browser language. You can also switch manually using the language selector in the header.
 
