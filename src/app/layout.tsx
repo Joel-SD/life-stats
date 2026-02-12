@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { I18nProvider } from "@/lib/i18n-context";
 import ClientFooter from "@/components/ClientFooter";
@@ -61,6 +62,7 @@ export default function RootLayout({
           {/* Footer global traducido */}
           <ClientFooter />
         </I18nProvider>
+        <Analytics />
       </body>
     </html>
   );
