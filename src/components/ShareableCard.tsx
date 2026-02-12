@@ -34,12 +34,42 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
   });
 
   const statItems = [
-    { emoji: "💓", label: t.shareableCard.heartbeats, value: formatCompact(stats.heartbeats), color: "#ec4899" },
-    { emoji: "🌬️", label: t.shareableCard.breaths, value: formatCompact(stats.breaths), color: "#06b6d4" },
-    { emoji: "🌍", label: t.shareableCard.spaceKm, value: formatCompact(stats.distanceTraveledKm), color: "#8b5cf6" },
-    { emoji: "☀️", label: t.shareableCard.daysLived, value: formatNumber(stats.daysLived), color: "#f59e0b" },
-    { emoji: "😴", label: t.shareableCard.sleepYears, value: stats.sleepYears.toFixed(1), color: "#6366f1" },
-    { emoji: "🌕", label: t.shareableCard.fullMoons, value: formatNumber(stats.fullMoons), color: "#fbbf24" },
+    {
+      emoji: "💓",
+      label: t.shareableCard.heartbeats,
+      value: formatCompact(stats.heartbeats),
+      color: "#ec4899",
+    },
+    {
+      emoji: "🌬️",
+      label: t.shareableCard.breaths,
+      value: formatCompact(stats.breaths),
+      color: "#06b6d4",
+    },
+    {
+      emoji: "🌍",
+      label: t.shareableCard.spaceKm,
+      value: formatCompact(stats.distanceTraveledKm),
+      color: "#8b5cf6",
+    },
+    {
+      emoji: "☀️",
+      label: t.shareableCard.daysLived,
+      value: formatNumber(stats.daysLived),
+      color: "#f59e0b",
+    },
+    {
+      emoji: "😴",
+      label: t.shareableCard.sleepYears,
+      value: stats.sleepYears.toFixed(1),
+      color: "#6366f1",
+    },
+    {
+      emoji: "🌕",
+      label: t.shareableCard.fullMoons,
+      value: formatNumber(stats.fullMoons),
+      color: "#fbbf24",
+    },
   ];
 
   return (
@@ -59,7 +89,8 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(160deg, #0f0c29 0%, #1a0a3e 30%, #24243e 60%, #0f3460 100%)",
+            background:
+              "linear-gradient(160deg, #0f0c29 0%, #1a0a3e 30%, #24243e 60%, #0f3460 100%)",
           }}
         />
         {/* Decorative blobs */}
