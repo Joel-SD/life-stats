@@ -1,26 +1,365 @@
 @import "tailwindcss";
 
+/* ============================================================
+   VARIABLES GLOBALES Y TEMAS
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a1a;
+  --foreground: #ededed;
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+  --secondary: #ec4899;
+  --accent: #06b6d4;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ============================================================
+   ESTILOS BASE
+   ============================================================ */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   GRADIENTES Y EFECTOS REUTILIZABLES
+   ============================================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.gradient-bg-subtle {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+.glow {
+  box-shadow:
+    0 0 40px rgba(139, 92, 246, 0.3),
+    0 0 80px rgba(236, 72, 153, 0.1);
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(139, 92, 246, 0.6),
+      0 0 60px rgba(236, 72, 153, 0.3);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger de animaciones: cada stat card entra con un delay diferente */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+.stagger-7 {
+  animation-delay: 0.7s;
+}
+.stagger-8 {
+  animation-delay: 0.8s;
+}
+
+/* ============================================================
+   FONDO ANIMADO (partículas/estrellas)
+   ============================================================ */
+
+.bg-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(2px 2px at 50px 160px, rgba(236, 72, 153, 0.1), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.15), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(6, 182, 212, 0.1), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 200px;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* ============================================================
+   LIFE GRID - Cuadrícula de semanas de vida (por décadas)
+   ============================================================ */
+
+.life-grid-cell {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.life-grid-cell:hover {
+  transform: scale(2);
+  z-index: 10;
+}
+
+.life-grid-cell.lived {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.life-grid-cell.remaining {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* "You are here" marker — pulsing bright cell */
+.life-grid-cell.here-marker {
+  background: #22d3ee;
+  box-shadow: 0 0 6px 2px rgba(34, 211, 238, 0.6);
+  animation: pulse-here 1.5s ease-in-out infinite;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+}
+
+@keyframes pulse-here {
+  0%,
+  100% {
+    box-shadow: 0 0 4px 1px rgba(34, 211, 238, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px 4px rgba(34, 211, 238, 0.8);
+  }
+}
+
+/* Decade group row */
+.life-grid-decade {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.life-grid-decade-label {
+  width: 48px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  text-align: right;
+}
+
+/* "You are here" label */
+.life-grid-here-label {
+  font-size: 10px;
+  color: #22d3ee;
+  white-space: nowrap;
+  margin-left: 4px;
+  font-weight: 600;
+  animation: pulse-here-text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-here-text {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   BARRA DE PROGRESO DE VIDA
+   ============================================================ */
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899, #06b6d4);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  border-radius: 9999px;
+  transition: width 1.5s ease-out;
+}
+
+/* ============================================================
+   SHAREABLE IMAGE STYLES
+   ============================================================ */
+
+.share-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+/* ============================================================
+   SCROLLBAR PERSONALIZADA
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .life-grid-cell {
+    width: 4px;
+    height: 4px;
+  }
+
+  .life-grid-cell.here-marker {
+    width: 5px;
+    height: 5px;
+  }
+
+  .life-grid-decade-label {
+    width: 36px;
+  }
+
+  .life-grid-here-label {
+    font-size: 8px;
+  }
+}
+
+/* ============================================================
+   AD SPACE PLACEHOLDER (para futura monetización)
+   ============================================================ */
+
+.ad-space {
+  /* Espacio reservado para Google AdSense u otros ads */
+  /* Descomentar cuando se integre:
+  min-height: 90px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  */
 }
