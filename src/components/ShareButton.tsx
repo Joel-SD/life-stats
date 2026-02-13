@@ -34,17 +34,38 @@ export default function ShareButton({ targetId, fileName = "my-life-stats" }: Sh
     }
 
     try {
+      // Temporarily move element on-screen for html2canvas to capture properly
+      const parent = element.parentElement;
+      const originalStyle = parent ? parent.style.cssText : "";
+      if (parent) {
+        parent.style.position = "absolute";
+        parent.style.left = "0";
+        parent.style.top = "0";
+        parent.style.zIndex = "-1";
+        parent.style.opacity = "1";
+        parent.style.overflow = "visible";
+        parent.style.height = "auto";
+      }
+
       const canvas = await html2canvas(element, {
-        backgroundColor: "#0a0a1a",
-        scale: 2, // Alta resolución
+        backgroundColor: null,
+        scale: 1, // 1080×1920 already high-res
         useCORS: true,
         logging: false,
-        // Añadir padding
-        x: 0,
-        y: 0,
+        width: 1080,
+        height: 1920,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 1080,
+        windowHeight: 1920,
       });
 
-      return canvas.toDataURL("image/png");
+      // Restore original hidden position
+      if (parent) {
+        parent.style.cssText = originalStyle;
+      }
+
+      return canvas.toDataURL("image/png", 0.95);
     } catch (error) {
       console.error("Error generating image:", error);
       return null;

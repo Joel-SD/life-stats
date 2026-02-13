@@ -91,6 +91,25 @@ export interface Translations {
     waterDesc: string;
   };
 
+  // Mind-blowing stats section
+  mindBlowing: {
+    sectionTitle: string;
+    coffeeCups: string;
+    coffeeCupsDesc: string;
+    screenYears: string;
+    screenYearsDesc: (hours: string) => string;
+    photosTaken: string;
+    photosTakenDesc: string;
+    bloodCycles: string;
+    bloodCyclesDesc: string;
+    cellsProduced: string;
+    cellsProducedDesc: string;
+    songsCouldListen: string;
+    songsCouldListenDesc: string;
+    earthRotationKm: string;
+    earthRotationKmDesc: string;
+  };
+
   // Journey Section
   journey: {
     sectionTitle: string;
@@ -255,6 +274,23 @@ const en: Translations = {
     water: "Liters of Water",
     waterDesc: "Staying hydrated since day one",
   },
+  mindBlowing: {
+    sectionTitle: "🤯 Mind-Blowing Facts",
+    coffeeCups: "Cups of Coffee",
+    coffeeCupsDesc: "Based on global average of ~2.7 cups/day",
+    screenYears: "Years on Screens",
+    screenYearsDesc: (hours) => `That's ${hours} hours staring at screens!`,
+    photosTaken: "Photos Taken",
+    photosTakenDesc: "Estimated since the smartphone era",
+    bloodCycles: "Full Blood Cycles",
+    bloodCyclesDesc: "Your heart pumps all your blood every ~60 seconds",
+    cellsProduced: "Cells Produced",
+    cellsProducedDesc: "Your body creates ~3.8 million cells per second",
+    songsCouldListen: "Songs You Could've Heard",
+    songsCouldListenDesc: "If music played non-stop while you were awake",
+    earthRotationKm: "KM from Earth Spinning",
+    earthRotationKmDesc: "Earth rotates at ~1,670 km/h at the equator",
+  },
   journey: {
     sectionTitle: "🚀 Your Journey",
     spaceKm: "KM Through Space",
@@ -405,6 +441,23 @@ const es: Translations = {
     mealsDesc: "3 comidas al día te mantienen en marcha",
     water: "Litros de Agua",
     waterDesc: "Hidratándote desde el día uno",
+  },
+  mindBlowing: {
+    sectionTitle: "🤯 Datos Alucinantes",
+    coffeeCups: "Tazas de Café",
+    coffeeCupsDesc: "Basado en promedio global de ~2.7 tazas/día",
+    screenYears: "Años en Pantallas",
+    screenYearsDesc: (hours) => `¡Son ${hours} horas mirando pantallas!`,
+    photosTaken: "Fotos Tomadas",
+    photosTakenDesc: "Estimado desde la era del smartphone",
+    bloodCycles: "Ciclos Completos de Sangre",
+    bloodCyclesDesc: "Tu corazón bombea toda tu sangre cada ~60 segundos",
+    cellsProduced: "Células Producidas",
+    cellsProducedDesc: "Tu cuerpo crea ~3.8 millones de células por segundo",
+    songsCouldListen: "Canciones que Pudiste Oír",
+    songsCouldListenDesc: "Si la música sonara sin parar mientras estás despierto",
+    earthRotationKm: "KM por Rotación Terrestre",
+    earthRotationKmDesc: "La Tierra rota a ~1,670 km/h en el ecuador",
   },
   journey: {
     sectionTitle: "🚀 Tu Viaje",
@@ -558,6 +611,23 @@ const pt: Translations = {
     water: "Litros de Água",
     waterDesc: "Se hidratando desde o primeiro dia",
   },
+  mindBlowing: {
+    sectionTitle: "🤯 Fatos de Explodir a Mente",
+    coffeeCups: "Xícaras de Café",
+    coffeeCupsDesc: "Baseado na média global de ~2,7 xícaras/dia",
+    screenYears: "Anos em Telas",
+    screenYearsDesc: (hours) => `São ${hours} horas olhando para telas!`,
+    photosTaken: "Fotos Tiradas",
+    photosTakenDesc: "Estimado desde a era do smartphone",
+    bloodCycles: "Ciclos Completos de Sangue",
+    bloodCyclesDesc: "Seu coração bombeia todo seu sangue a cada ~60 segundos",
+    cellsProduced: "Células Produzidas",
+    cellsProducedDesc: "Seu corpo cria ~3,8 milhões de células por segundo",
+    songsCouldListen: "Músicas que Poderia Ouvir",
+    songsCouldListenDesc: "Se a música tocasse sem parar enquanto acordado",
+    earthRotationKm: "KM pela Rotação da Terra",
+    earthRotationKmDesc: "A Terra gira a ~1.670 km/h no equador",
+  },
   journey: {
     sectionTitle: "🚀 Sua Jornada",
     spaceKm: "KM pelo Espaço",
@@ -710,6 +780,23 @@ const hi: Translations = {
     water: "लीटर पानी",
     waterDesc: "पहले दिन से हाइड्रेटेड",
   },
+  mindBlowing: {
+    sectionTitle: "🤯 दिमाग हिला देने वाले तथ्य",
+    coffeeCups: "कॉफी के कप",
+    coffeeCupsDesc: "वैश्विक औसत ~2.7 कप/दिन पर आधारित",
+    screenYears: "स्क्रीन पर साल",
+    screenYearsDesc: (hours) => `वो ${hours} घंटे स्क्रीन देखते हुए!`,
+    photosTaken: "फ़ोटो खींची",
+    photosTakenDesc: "स्मार्टफोन युग से अनुमानित",
+    bloodCycles: "पूर्ण रक्त चक्र",
+    bloodCyclesDesc: "आपका दिल हर ~60 सेकंड में पूरा खून पंप करता है",
+    cellsProduced: "कोशिकाएँ बनीं",
+    cellsProducedDesc: "आपका शरीर प्रति सेकंड ~38 लाख कोशिकाएँ बनाता है",
+    songsCouldListen: "गाने जो सुन सकते थे",
+    songsCouldListenDesc: "अगर जागते समय लगातार संगीत बजता",
+    earthRotationKm: "KM पृथ्वी के घूमने से",
+    earthRotationKmDesc: "पृथ्वी भूमध्य रेखा पर ~1,670 km/h पर घूमती है",
+  },
   journey: {
     sectionTitle: "🚀 आपकी यात्रा",
     spaceKm: "KM अंतरिक्ष में",
@@ -861,6 +948,23 @@ const fr: Translations = {
     mealsDesc: "3 repas par jour pour avancer",
     water: "Litres d'Eau",
     waterDesc: "Hydraté(e) depuis le premier jour",
+  },
+  mindBlowing: {
+    sectionTitle: "🤯 Faits Époustouflants",
+    coffeeCups: "Tasses de Café",
+    coffeeCupsDesc: "Basé sur la moyenne mondiale de ~2,7 tasses/jour",
+    screenYears: "Années devant les Écrans",
+    screenYearsDesc: (hours) => `C'est ${hours} heures à fixer des écrans !`,
+    photosTaken: "Photos Prises",
+    photosTakenDesc: "Estimé depuis l'ère du smartphone",
+    bloodCycles: "Cycles Sanguins Complets",
+    bloodCyclesDesc: "Votre cœur pompe tout votre sang toutes les ~60 secondes",
+    cellsProduced: "Cellules Produites",
+    cellsProducedDesc: "Votre corps crée ~3,8 millions de cellules par seconde",
+    songsCouldListen: "Chansons Possibles",
+    songsCouldListenDesc: "Si la musique jouait sans arrêt pendant l'éveil",
+    earthRotationKm: "KM par Rotation Terrestre",
+    earthRotationKmDesc: "La Terre tourne à ~1 670 km/h à l'équateur",
   },
   journey: {
     sectionTitle: "🚀 Votre Voyage",

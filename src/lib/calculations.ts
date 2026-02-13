@@ -67,6 +67,27 @@ const LAUGHS_PER_DAY = 15;
 /** Sueños promedio por noche */
 const DREAMS_PER_NIGHT = 4;
 
+/** Cafés promedio por día (para adultos, ~2.7 cups/day global average, prorrateado) */
+const COFFEES_PER_DAY_ADULT = 2.7;
+
+/** Horas promedio en pantalla por día (promedio global adulto) */
+const SCREEN_HOURS_PER_DAY = 7;
+
+/** Fotos tomadas por persona promedio por día (en la era smartphone) */
+const PHOTOS_PER_DAY = 5;
+
+/** Veces que tu corazón bombea toda tu sangre (~5L) por el cuerpo — 1 ciclo cada ~60 seg */
+const BLOOD_CYCLES_PER_DAY = 1440;
+
+/** Tu cuerpo produce ~3.8 millones de células por segundo */
+const CELLS_PRODUCED_PER_SECOND = 3_800_000;
+
+/** Velocidad de la Tierra rotando (en el ecuador) km/h */
+const EARTH_ROTATION_KMH = 1670;
+
+/** Duración promedio de una canción en minutos */
+const SONG_DURATION_MINUTES = 3.5;
+
 // ============================================================
 // TIPOS
 // ============================================================
@@ -107,6 +128,16 @@ export interface LifeStats {
   dreams: number;
   fullMoons: number;
   sunrises: number;
+
+  // New mind-blowing stats
+  coffeeCups: number;
+  screenHours: number;
+  screenYears: number;
+  photosTaken: number;
+  bloodCycles: number;
+  cellsProduced: number;
+  songsCouldListen: number;
+  earthRotationKm: number;
 
   // Fun facts (datos para construir textos traducidos)
   funFacts: FunFactData[];
@@ -239,6 +270,27 @@ export function calculateLifeStats(birthDateString: string): LifeStats {
   const fullMoons = Math.floor(age.totalDays / 29.53); // Ciclo lunar ~29.53 días
   const sunrises = age.totalDays;
 
+  // New mind-blowing stats
+  // Coffee: adults (16+) drink ~2.7/day, scale down for younger years
+  const adultDays = Math.max(0, age.totalDays - 16 * 365.25);
+  const coffeeCups = Math.floor(adultDays * COFFEES_PER_DAY_ADULT);
+  // Screen time: ~7h/day average (scale from age 5+)
+  const screenDays = Math.max(0, age.totalDays - 5 * 365.25);
+  const screenHours = Math.floor(screenDays * SCREEN_HOURS_PER_DAY);
+  const screenYears = screenHours / (365.25 * 24);
+  // Photos: ~5/day in smartphone era (from age 12+)
+  const photoDays = Math.max(0, age.totalDays - 12 * 365.25);
+  const photosTaken = Math.floor(photoDays * PHOTOS_PER_DAY);
+  // Blood cycles: your heart pumps all blood through your body ~1440 times/day
+  const bloodCycles = age.totalDays * BLOOD_CYCLES_PER_DAY;
+  // Cells produced: 3.8M cells/second
+  const cellsProduced = age.totalDays * 86400 * CELLS_PRODUCED_PER_SECOND;
+  // Songs you could have listened to (based on waking hours)
+  const wakingMinutes = age.totalDays * 16 * 60; // 16 waking hours
+  const songsCouldListen = Math.floor(wakingMinutes / SONG_DURATION_MINUTES);
+  // Distance from Earth's rotation
+  const earthRotationKm = age.totalDays * 24 * EARTH_ROTATION_KMH;
+
   // Fun facts
   const funFacts = generateFunFactsData(age.totalDays, heartbeats, distanceTraveledKm, age.years);
 
@@ -269,6 +321,14 @@ export function calculateLifeStats(birthDateString: string): LifeStats {
     dreams,
     fullMoons,
     sunrises,
+    coffeeCups,
+    screenHours,
+    screenYears,
+    photosTaken,
+    bloodCycles,
+    cellsProduced,
+    songsCouldListen,
+    earthRotationKm,
     funFacts,
   };
 }

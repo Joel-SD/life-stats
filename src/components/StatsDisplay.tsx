@@ -207,6 +207,82 @@ export default function StatsDisplay({ stats, birthDate }: StatsDisplayProps) {
       </section>
 
       {/* ============================================================
+          SECCIÓN 4b: Mind-blowing stats
+          ============================================================ */}
+      <section>
+        <h2 className="text-xl font-bold text-white/80 mb-4">{t.mindBlowing.sectionTitle}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <StatCard
+            icon="☕"
+            value={stats.coffeeCups}
+            label={t.mindBlowing.coffeeCups}
+            description={t.mindBlowing.coffeeCupsDesc}
+            format="full"
+            accentColor="orange"
+            delay="stagger-1"
+          />
+          <StatCard
+            icon="📱"
+            value={stats.screenYears}
+            label={t.mindBlowing.screenYears}
+            description={t.mindBlowing.screenYearsDesc(
+              Math.floor(stats.screenHours).toLocaleString(),
+            )}
+            format="full"
+            suffix="years"
+            accentColor="cyan"
+            delay="stagger-2"
+          />
+          <StatCard
+            icon="📸"
+            value={stats.photosTaken}
+            label={t.mindBlowing.photosTaken}
+            description={t.mindBlowing.photosTakenDesc}
+            format="full"
+            accentColor="pink"
+            delay="stagger-3"
+          />
+          <StatCard
+            icon="🩸"
+            value={stats.bloodCycles}
+            label={t.mindBlowing.bloodCycles}
+            description={t.mindBlowing.bloodCyclesDesc}
+            format="compact"
+            accentColor="pink"
+            delay="stagger-4"
+          />
+          <StatCard
+            icon="🧬"
+            value={stats.cellsProduced}
+            label={t.mindBlowing.cellsProduced}
+            description={t.mindBlowing.cellsProducedDesc}
+            format="compact"
+            accentColor="purple"
+            delay="stagger-5"
+          />
+          <StatCard
+            icon="🎵"
+            value={stats.songsCouldListen}
+            label={t.mindBlowing.songsCouldListen}
+            description={t.mindBlowing.songsCouldListenDesc}
+            format="compact"
+            accentColor="green"
+            delay="stagger-6"
+          />
+          <StatCard
+            icon="🌀"
+            value={stats.earthRotationKm}
+            label={t.mindBlowing.earthRotationKm}
+            description={t.mindBlowing.earthRotationKmDesc}
+            format="compact"
+            suffix="km"
+            accentColor="cyan"
+            delay="stagger-7"
+          />
+        </div>
+      </section>
+
+      {/* ============================================================
           AD SPACE - Espacio para anuncio entre secciones (futuro)
           ============================================================ */}
       {/* <div className="ad-space">Ad Space - Mid Content</div> */}

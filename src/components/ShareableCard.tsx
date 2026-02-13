@@ -1,9 +1,11 @@
 /**
- * ShareableCard.tsx - Tarjeta optimizada para redes sociales
+ * ShareableCard.tsx - Tarjeta para redes sociales (Instagram Story)
  *
- * Diseño tipo "Instagram Story" / post viral.
- * Formato 1080×1350 (4:5, ideal para Instagram/Facebook feed).
- * Colores vibrantes, tipografía grande, datos impactantes.
+ * Formato 1080×1920 (9:16) — Instagram/TikTok Story.
+ * Se renderiza fuera de pantalla y html2canvas la captura.
+ *
+ * NOTA: html2canvas NO soporta background-clip:text, así que
+ * el título usa color sólido en lugar de gradiente de texto.
  */
 "use client";
 
@@ -38,50 +40,51 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
       emoji: "💓",
       label: t.shareableCard.heartbeats,
       value: formatCompact(stats.heartbeats),
-      color: "#ec4899",
+      color: "#f472b6",
     },
     {
       emoji: "🌬️",
       label: t.shareableCard.breaths,
       value: formatCompact(stats.breaths),
-      color: "#06b6d4",
+      color: "#22d3ee",
     },
     {
       emoji: "🌍",
       label: t.shareableCard.spaceKm,
       value: formatCompact(stats.distanceTraveledKm),
-      color: "#8b5cf6",
+      color: "#a78bfa",
     },
     {
       emoji: "☀️",
       label: t.shareableCard.daysLived,
       value: formatNumber(stats.daysLived),
-      color: "#f59e0b",
+      color: "#fbbf24",
     },
     {
       emoji: "😴",
       label: t.shareableCard.sleepYears,
       value: stats.sleepYears.toFixed(1),
-      color: "#6366f1",
+      color: "#818cf8",
     },
     {
       emoji: "🌕",
       label: t.shareableCard.fullMoons,
       value: formatNumber(stats.fullMoons),
-      color: "#fbbf24",
+      color: "#f9a8d4",
     },
   ];
 
   return (
-    <div className="overflow-hidden" style={{ height: 0 }}>
+    <div style={{ position: "absolute", left: "-9999px", top: 0 }}>
       <div
         id="shareable-card"
         style={{
           width: "1080px",
-          height: "1350px",
+          height: "1920px",
           position: "relative",
           overflow: "hidden",
           fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+          color: "white",
         }}
       >
         {/* === Background === */}
@@ -90,46 +93,45 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(160deg, #0f0c29 0%, #1a0a3e 30%, #24243e 60%, #0f3460 100%)",
+              "linear-gradient(165deg, #0a0118 0%, #1a0533 25%, #12062e 50%, #0c1445 75%, #071130 100%)",
           }}
         />
         {/* Decorative blobs */}
         <div
           style={{
             position: "absolute",
-            top: "-120px",
-            right: "-120px",
-            width: "400px",
-            height: "400px",
-            background: "radial-gradient(circle, rgba(139,92,246,0.3), transparent 70%)",
-            borderRadius: "50%",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-100px",
-            left: "-100px",
-            width: "350px",
-            height: "350px",
-            background: "radial-gradient(circle, rgba(236,72,153,0.25), transparent 70%)",
-            borderRadius: "50%",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            top: "-150px",
+            right: "-100px",
             width: "500px",
             height: "500px",
-            background: "radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%)",
+            background: "radial-gradient(circle, rgba(139,92,246,0.35), transparent 65%)",
+            borderRadius: "50%",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "300px",
+            left: "-120px",
+            width: "450px",
+            height: "450px",
+            background: "radial-gradient(circle, rgba(236,72,153,0.25), transparent 65%)",
+            borderRadius: "50%",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-120px",
+            right: "-80px",
+            width: "400px",
+            height: "400px",
+            background: "radial-gradient(circle, rgba(6,182,212,0.2), transparent 65%)",
             borderRadius: "50%",
           }}
         />
 
-        {/* === Content Container === */}
+        {/* === Content === */}
         <div
           style={{
             position: "relative",
@@ -137,37 +139,37 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            padding: "60px 56px",
+            padding: "80px 60px 56px",
           }}
         >
-          {/* Header: Title + Birth */}
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <div
-              style={{
-                fontSize: "52px",
-                fontWeight: 900,
-                letterSpacing: "-1px",
-                background: "linear-gradient(135deg, #a78bfa, #ec4899, #06b6d4)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                lineHeight: 1.1,
-                marginBottom: "16px",
-              }}
-            >
-              {t.shareableCard.title}
-            </div>
-            <div
-              style={{
-                fontSize: "22px",
-                color: "rgba(255,255,255,0.5)",
-                fontWeight: 300,
-              }}
-            >
-              {t.shareableCard.born} {birthFormatted}
-            </div>
+          {/* ── Title ── */}
+          {/* html2canvas can't do background-clip:text, so use solid color */}
+          <div
+            style={{
+              fontSize: "72px",
+              fontWeight: 900,
+              letterSpacing: "-2px",
+              color: "#e0b3ff",
+              lineHeight: 1.1,
+              marginBottom: "16px",
+              textAlign: "center",
+            }}
+          >
+            ✨ Life Stats ✨
+          </div>
+          <div
+            style={{
+              fontSize: "28px",
+              color: "rgba(255,255,255,0.4)",
+              fontWeight: 300,
+              textAlign: "center",
+              marginBottom: "56px",
+            }}
+          >
+            {t.shareableCard.born} {birthFormatted}
           </div>
 
-          {/* Stats Grid: 2 columns × 3 rows */}
+          {/* ── Stats Grid: 2×3 ── */}
           <div
             style={{
               display: "grid",
@@ -180,26 +182,27 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
               <div
                 key={i}
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  borderRadius: "24px",
-                  padding: "28px 24px",
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: "28px",
+                  padding: "24px 16px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
-                <div style={{ fontSize: "36px", marginBottom: "8px" }}>{item.emoji}</div>
+                <div style={{ fontSize: "48px", marginBottom: "10px", lineHeight: 1 }}>
+                  {item.emoji}
+                </div>
                 <div
                   style={{
-                    fontSize: "14px",
-                    color: "rgba(255,255,255,0.45)",
+                    fontSize: "18px",
+                    color: "rgba(255,255,255,0.35)",
                     textTransform: "uppercase",
-                    letterSpacing: "1.5px",
-                    fontWeight: 600,
-                    marginBottom: "8px",
+                    letterSpacing: "2.5px",
+                    fontWeight: 700,
+                    marginBottom: "12px",
                     textAlign: "center",
                   }}
                 >
@@ -207,10 +210,10 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
                 </div>
                 <div
                   style={{
-                    fontSize: "40px",
+                    fontSize: "52px",
                     fontWeight: 900,
                     color: item.color,
-                    letterSpacing: "-1px",
+                    letterSpacing: "-2px",
                     lineHeight: 1,
                   }}
                 >
@@ -220,26 +223,21 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
             ))}
           </div>
 
-          {/* Life Progress Bar */}
-          <div style={{ margin: "36px 0 28px" }}>
+          {/* ── Life Progress ── */}
+          <div style={{ marginTop: "44px", marginBottom: "28px" }}>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                fontSize: "16px",
+                alignItems: "center",
+                fontSize: "22px",
                 color: "rgba(255,255,255,0.35)",
-                marginBottom: "12px",
-                fontWeight: 500,
+                marginBottom: "16px",
+                fontWeight: 600,
               }}
             >
               <span>{t.shareableCard.lifeProgress}</span>
-              <span
-                style={{
-                  color: "#a78bfa",
-                  fontWeight: 800,
-                  fontSize: "20px",
-                }}
-              >
+              <span style={{ color: "#c084fc", fontWeight: 900, fontSize: "28px" }}>
                 {stats.lifePercentage.toFixed(1)}%
               </span>
             </div>
@@ -247,7 +245,7 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
               style={{
                 background: "rgba(255,255,255,0.08)",
                 borderRadius: "999px",
-                height: "16px",
+                height: "24px",
                 overflow: "hidden",
               }}
             >
@@ -262,42 +260,32 @@ export default function ShareableCard({ stats, birthDate }: ShareableCardProps) 
             </div>
           </div>
 
-          {/* Age line */}
+          {/* ── Age ── */}
           <div
             style={{
               textAlign: "center",
-              marginBottom: "32px",
+              fontSize: "30px",
+              color: "rgba(255,255,255,0.55)",
+              fontWeight: 500,
+              marginBottom: "36px",
             }}
           >
-            <span
-              style={{
-                fontSize: "24px",
-                color: "rgba(255,255,255,0.65)",
-                fontWeight: 500,
-              }}
-            >
-              {t.shareableCard.ageText(stats.years, stats.months, stats.days)}
-            </span>
+            {t.shareableCard.ageText(stats.years, stats.months, stats.days)}
           </div>
 
-          {/* Watermark / Branding */}
+          {/* ── Watermark ── */}
           <div
             style={{
               textAlign: "center",
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              paddingTop: "20px",
+              borderTop: "1px solid rgba(255,255,255,0.06)",
+              paddingTop: "24px",
+              fontSize: "22px",
+              color: "rgba(255,255,255,0.2)",
+              fontWeight: 500,
+              letterSpacing: "0.5px",
             }}
           >
-            <span
-              style={{
-                fontSize: "18px",
-                color: "rgba(255,255,255,0.25)",
-                fontWeight: 500,
-                letterSpacing: "0.5px",
-              }}
-            >
-              {t.shareableCard.watermark}
-            </span>
+            {t.shareableCard.watermark}
           </div>
         </div>
       </div>
